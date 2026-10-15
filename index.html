@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR Level 3 Sport - Unit 3 Synoptic Revision Guide</title>
+  <style>
+    :root {
+      --primary: #003366;
+      --primary-accent: #0056b3;
+      --secondary: #f4f7f6;
+      --text: #222222;
+      --card-bg: #ffffff;
+      --border: #dcdcdc;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #eef2f5;
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .user-info-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      background: #ffffff;
+      border-left: 5px solid var(--primary);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      color: #555;
+    }
+
+    .input-group input {
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-accent); }
+
+    .btn-success { background: var(--success); color: white; }
+    .btn-success:hover { background: #218838; }
+
+    .btn-secondary { background: #6c757d; color: white; }
+    .btn-secondary:hover { background: #5a6268; }
+
+    .btn-doc { background: #0f9d58; color: white; }
+    .btn-doc:hover { background: #0b8043; }
+
+    .save-status {
+      font-size: 0.85rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .question-card {
+      position: relative;
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .question-marks {
+      background: #e9ecef;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: #495057;
+    }
+
+    .question-text {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      white-space: pre-line;
+    }
+
+    .answer-box {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 80px;
+      margin-bottom: 8px;
+    }
+
+    .answer-box:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 5px rgba(0,51,102,0.2);
+    }
+
+    .list-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .list-item span {
+      font-weight: bold;
+      color: #666;
+    }
+
+    .list-item input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin: 10px 0;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .feedback-box {
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .feedback-box.attempted {
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--primary);
+    }
+
+    .feedback-box.unattempted {
+      background-color: #fff3cd;
+      border-left: 4px solid var(--warning);
+      color: #856404;
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .score-badge.high { background-color: var(--success); }
+    .score-badge.med { background-color: var(--warning); color: #333; }
+    .score-badge.low { background-color: var(--danger); }
+
+    .model-answer {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #ccc;
+      font-size: 0.9rem;
+    }
+
+    .model-answer h5 {
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .model-answer ul {
+      margin-left: 20px;
+    }
+
+    .results-card {
+      text-align: center;
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      display: none;
+    }
+
+    .results-card.show {
+      display: block;
+    }
+
+    .total-score {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .hidden-file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>OCR Level 3 Sport & Physical Activity</h1>
+    <p>Unit 3 Synoptic Revision Guide - Interactive Worksheet</p>
+  </header>
+
+  <div class="container">
+    
+    <!-- Student Info Card -->
+    <div class="card user-info-card">
+      <div class="input-group">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Enter your full name">
+      </div>
+      <div class="input-group">
+        <label for="candidateNo">Candidate / Class Number:</label>
+        <input type="text" id="candidateNo" placeholder="e.g. 1234 / 12B-PE">
+      </div>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="actions-bar">
+      <div class="btn-group">
+        <button class="btn-primary" onclick="saveToLocalStorage()">💾 Save Progress</button>
+        <button class="btn-secondary" onclick="exportJSON()">📥 Export JSON</button>
+        <button class="btn-secondary" onclick="document.getElementById('importFileInput').click()">📤 Load JSON</button>
+        <input type="file" id="importFileInput" class="hidden-file-input" accept=".json" onchange="importJSON(event)">
+        <button class="btn-doc" onclick="exportGoogleDoc()">📄 Export as Google Doc</button>
+      </div>
+      <button class="btn-success" onclick="markAllQuestions()">✔ Mark My Work</button>
+      <span class="save-status" id="saveStatus">Ready</span>
+    </div>
+
+    <!-- Overall Results Summary -->
+    <div class="card results-card" id="resultsSummary">
+      <h2>Revision Guide Results</h2>
+      <div class="total-score" id="totalScoreDisplay">0 / 66</div>
+      <p id="gradeFeedback"></p>
+    </div>
+
+    <!-- Questions Container -->
+    <div id="questionsContainer">
+      <div class="card"><p>Loading questions...</p></div>
+    </div>
+
+  </div>
+
+  <script>
+    // --- Question Database ---
+    const questionsData = [
+      {
+        id: "q1",
+        title: "Question 1",
+        marks: 4,
+        text: "Describe four roles of UK Sport.",
+        type: "list",
+        count: 4,
+        acceptable: [
+          ["attract", "bid", "hosting", "major event", "sporting event"],
+          ["ngb", "national governing body", "supports ngb", "works with ngb"],
+          ["lottery", "funding", "distribute funding", "lottery money"],
+          ["olympic", "paralympic", "competition funding"],
+          ["world class programme", "wcp"],
+          ["elite athlete", "podium potential", "talent"],
+          ["ethical", "drug free", "clean sport", "anti-doping"],
+          ["organisation", "administration of sport"],
+          ["national strategy"],
+          ["talent pathway", "talent id", "talent identification"],
+          ["official", "coach", "train coach", "develop official"],
+          ["facility", "facilities", "equipment"],
+          ["medical", "sports science", "uk institute of sport", "ukis"]
+        ],
+        modelAnswers: [
+          "Attracts / bids for major sporting events",
+          "Supports and works with National Governing Bodies (NGBs)",
+          "Manages and distributes National Lottery funding",
+          "Funding for Olympic & Paralympic sport and competitions",
+          "Manages the World Class Programme",
+          "Supports elite athletes (e.g. Podium / Podium Potential)",
+          "Promotes ethical behaviour / drug-free sport",
+          "Develops national strategy for sport & talent identification pathways"
+        ]
+      },
+      {
+        id: "q2i",
+        title: "Question 2 (i)",
+        marks: 3,
+        text: "Identify three other attributes that a good coach should have.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["communication", "listening", "listener", "explaining", "feedback"],
+          ["relationship", "establish relationship", "maintain relationship"],
+          ["organisation", "organisational", "organise fixtures", "well organised", "organise tournaments"],
+          ["empathy", "compassion", "compassionate"]
+        ],
+        modelAnswers: [
+          "Communication skills (listening, explaining, giving feedback)",
+          "Ability to establish and maintain positive relationships",
+          "Organisational skills (organising fixtures, sessions, tournaments)",
+          "Empathy and compassion"
+        ]
+      },
+      {
+        id: "q2ii",
+        title: "Question 2 (ii)",
+        marks: 3,
+        text: "Identify three long-term physiological benefits of regular physical activity to the cardiovascular system.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["heart stronger", "hypertrophy", "cardiac hypertrophy", "thicker left ventricle", "left ventricular hypertrophy"],
+          ["stroke volume", "increased stroke volume"],
+          ["cardiac output", "increased cardiac output", "more blood pumped"],
+          ["resting heart rate", "lower heart rate", "decreased heart rate", "lower resting hr"],
+          ["capillarisation", "capillary density", "increased capillaries"],
+          ["vascular shunt", "efficient vascular shunt"],
+          ["blood pressure", "lower blood pressure", "reduced hypertension", "cholesterol"],
+          ["chd", "coronary heart disease", "heart attack", "stroke", "reduced risk of chd"],
+          ["haematocrit", "hemoglobin", "haemoglobin", "red blood cells"]
+        ],
+        modelAnswers: [
+          "Cardiac hypertrophy / stronger heart muscle / thicker left ventricle wall",
+          "Increased stroke volume and maximal cardiac output",
+          "Lower resting heart rate",
+          "Increased capillarisation at cardiac and skeletal muscles",
+          "Lower blood pressure / reduced risk of CHD and stroke"
+        ]
+      },
+      {
+        id: "q3",
+        title: "Question 3",
+        marks: 1,
+        text: "One method of measuring the performance of sports development is by using benchmarks.\nIdentify one other method for measuring the performance of sports development.",
+        type: "single",
+        acceptable: [
+          ["self-assessment", "self assessment", "self evaluation"],
+          ["external assessment", "external evaluation", "external audit"]
+        ],
+        modelAnswers: [
+          "Self-assessment OR External assessment"
+        ]
+      },
+      {
+        id: "q4a",
+        title: "Question 4 (a)",
+        marks: 3,
+        text: "Outline three reasons why a democratic leadership style may be best for performers at the performance stage of the sports development continuum.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["collaborative", "work with coach", "not instructed"],
+          ["review", "evaluate", "evaluate own performance", "strengths and weaknesses"],
+          ["discussion", "input", "performer input"],
+          ["smaller groups", "one to one", "1-to-1"],
+          ["cohesion", "group cohesion"],
+          ["motivation", "feel valued", "valued"],
+          ["satisfaction", "enjoyment"],
+          ["ownership", "responsibility", "own decisions", "decision making"],
+          ["leadership skills", "develop leadership"]
+        ],
+        modelAnswers: [
+          "Enables collaborative working between performer and coach rather than simple instruction",
+          "Allows performers to evaluate their own performance and identify strengths/weaknesses",
+          "Gives ownership and decision-making responsibility to the performer",
+          "Increases motivation and makes performers feel valued",
+          "Helps build group cohesion and leadership skills"
+        ]
+      },
+      {
+        id: "q4b",
+        title: "Question 4 (b)",
+        marks: 3,
+        text: "Identify three health benefits of regular exercise on the skeletal system that a coach may use to encourage participation in the 25- to 50-year-old age group.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["bone density", "bone strength", "stronger bones"],
+          ["synovial fluid", "production of synovial fluid"],
+          ["ligament", "stronger ligaments", "joint stability", "stronger joints"],
+          ["osteoporosis", "reduced risk of osteoporosis"],
+          ["injury", "reduced risk of injury"],
+          ["osteoarthritis", "arthritis", "reduced risk of osteoarthritis"],
+          ["joint mobility", "flexibility", "range of movement"],
+          ["healthy weight", "less stress on bones", "less stress on joints"],
+          ["posture", "improved posture"]
+        ],
+        modelAnswers: [
+          "Increased bone density / bone strength",
+          "Increased production of synovial fluid / improved joint flexibility",
+          "Stronger ligaments / increased joint stability",
+          "Reduced risk of osteoporosis and osteoarthritis"
+        ]
+      },
+      {
+        id: "q5a",
+        title: "Question 5 (a)",
+        marks: 4,
+        text: "Tuckman identified four stages of group development (forming, storming, norming, performing, adjourning).\nIdentify and describe two stages of group development (other than forming).",
+        type: "stage_desc",
+        modelAnswers: [
+          "Storming: Competing for roles, conflict/tensions, power struggles, focus becomes clearer.",
+          "Norming: Roles/responsibilities agreed, working towards a common goal, group consensus/unity.",
+          "Performing: Group works seamlessly together to achieve goals, autonomous, resolving disputes constructively.",
+          "Adjourning/Mourning: Group disbands after goal completion, celebrating achievements."
+        ]
+      },
+      {
+        id: "q5b",
+        title: "Question 5 (b)",
+        marks: 2,
+        text: "Identify two positive short-term effects of exercise on the muscular system.",
+        type: "list",
+        count: 2,
+        acceptable: [
+          ["blood flow", "increased blood flow"],
+          ["oxygen", "oxygenated blood", "energy available"],
+          ["temperature", "increased muscle temperature", "heat"],
+          ["pliability", "elasticity", "flexibility", "pliable"],
+          ["force", "muscle contraction force"]
+        ],
+        modelAnswers: [
+          "Increased blood flow / oxygen delivery to working muscles",
+          "Increased muscle temperature",
+          "Increased muscle flexibility / pliability / elasticity",
+          "Increased force of muscle contraction"
+        ]
+      },
+      {
+        id: "q5c",
+        title: "Question 5 (c)",
+        marks: 3,
+        text: "Other than physical benefits, identify three benefits of participating in sport or physical activity.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["aggression", "outlet for stress", "release tension"],
+          ["confidence", "self-confidence", "self-esteem", "mental health"],
+          ["socialise", "meet people", "make friends", "friendships"],
+          ["values", "teamwork", "fair play", "respect", "discipline", "tolerance"],
+          ["enjoyment", "happiness", "fun", "satisfaction"],
+          ["concentration", "focus", "productivity"],
+          ["crime", "anti-social behavior", "reduced crime"],
+          ["employment", "coaching", "volunteering"],
+          ["sleep", "better sleep"]
+        ],
+        modelAnswers: [
+          "Psychological benefits: Increased self-confidence, self-esteem, reduced stress/anxiety",
+          "Social benefits: Opportunity to socialise, make friends, improve social skills",
+          "Moral/Values: Development of teamwork, fair play, respect, discipline",
+          "Community benefits: Reduction in anti-social behavior/crime, volunteering opportunities"
+        ]
+      },
+      {
+        id: "q6i",
+        title: "Question 6 (i)",
+        marks: 1,
+        text: "In the respiratory system, the strength of the diaphragm and intercostal muscles are increased which results in increased stroke volume.",
+        type: "tf",
+        correct: "False",
+        modelAnswers: ["False (Stroke volume is a function of the cardiovascular system, not respiratory)."]
+      },
+      {
+        id: "q6ii",
+        title: "Question 6 (ii)",
+        marks: 1,
+        text: "In the cardiovascular system the chambers of the heart increase in size, therefore maximal cardiac output is increased and resting heart rate is reduced.",
+        type: "tf",
+        correct: "True",
+        modelAnswers: ["True (Cardiac hypertrophy leads to greater stroke volume, higher max cardiac output, and lower resting heart rate)."]
+      },
+      {
+        id: "q7",
+        title: "Question 7",
+        marks: 2,
+        text: "Use examples to describe the use of two different leadership styles in sport.",
+        type: "area",
+        acceptable: [
+          ["autocratic", "dictatorial", "makes all decisions", "dangerous situation", "time sensitive", "half time"],
+          ["democratic", "consults", "seeks input", "values opinions", "safe situation"],
+          ["laissez-faire", "laissez faire", "passive", "delegates", "experienced performers"]
+        ],
+        modelAnswers: [
+          "Autocratic: Leader makes all decisions without consultation. Used in dangerous situations or time-critical moments (e.g. outdoor rock climbing instructor or urgent half-time tactical changes).",
+          "Democratic: Leader seeks input and opinions before making decisions. Used with motivated performers in safe environments (e.g. coach planning strategy with team captain).",
+          "Laissez-faire: Leader steps back and delegates decision making to performers. Used with highly experienced/elite athletes."
+        ]
+      },
+      {
+        id: "q8a",
+        title: "Question 8 (a)",
+        marks: 3,
+        text: "Dave is 55 years old and has been physically inactive for 30 years.\nIdentify three cardiovascular benefits of participating in physical activity for physically inactive people like Dave.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["stroke volume", "increased stroke volume"],
+          ["resting heart rate", "decreased resting heart rate", "lower hr"],
+          ["cardiac output", "increased cardiac output"],
+          ["blood pressure", "decreased blood pressure", "lower bp"],
+          ["chd", "coronary heart disease", "reduced risk of heart attack", "reduced stroke risk"],
+          ["blood flow", "circulation", "improved circulation"],
+          ["cardiac hypertrophy", "stronger heart", "heart strength"],
+          ["capillarisation", "capillary density"],
+          ["red blood cells", "haemoglobin"]
+        ],
+        modelAnswers: [
+          "Increased stroke volume and cardiac output",
+          "Decreased resting heart rate and reduced blood pressure",
+          "Reduced risk of coronary heart disease (CHD) and strokes",
+          "Increased capillarisation and improved circulation"
+        ]
+      },
+      {
+        id: "q8b",
+        title: "Question 8 (b)",
+        marks: 3,
+        text: "Describe a suitable warm up for Dave (55 years old, previously inactive).",
+        type: "area",
+        acceptable: [
+          ["pulse raiser", "brisk walk", "walk", "low intensity"],
+          ["static stretch", "hamstring stretch", "calf stretch"],
+          ["dynamic stretch", "mobility", "sport specific"]
+        ],
+        modelAnswers: [
+          "1. Low-intensity pulse raiser: e.g. 5-minute brisk walk or light marching.",
+          "2. Static stretches: gentle stretches targeting major muscle groups (e.g. hamstrings, calves).",
+          "3. Dynamic / mobility exercises: gentle sport-specific movements in low intensity."
+        ]
+      },
+      {
+        id: "q9i",
+        title: "Question 9 (i)",
+        marks: 2,
+        text: "Identify two long-term effects that exercise may have on improving respiratory health and fitness.",
+        type: "list",
+        count: 2,
+        acceptable: [
+          ["capillarisation", "alveoli", "capillaries at alveoli"],
+          ["respiratory muscles", "diaphragm strength", "intercostal muscles"],
+          ["lung capacity", "thoracic cavity", "vo2 max", "vital capacity"],
+          ["tidal volume", "increased tidal volume"],
+          ["breathing rate", "resting breath frequency", "lower breathing rate"],
+          ["lung disease", "chronic respiratory disease"]
+        ],
+        modelAnswers: [
+          "Increased capillarisation at the alveoli",
+          "Increased strength of respiratory muscles (diaphragm and intercostals)",
+          "Increased lung capacity / vital capacity / VO2 max",
+          "Decreased resting breathing frequency"
+        ]
+      },
+      {
+        id: "q9ii",
+        title: "Question 9 (ii)",
+        marks: 2,
+        text: "Identify two long-term effects that exercise may have on improving cardiovascular health and fitness.",
+        type: "list",
+        count: 2,
+        acceptable: [
+          ["cardiac hypertrophy", "heart muscle strength", "stronger heart"],
+          ["chamber size", "ventricle size", "atria size"],
+          ["stroke volume", "increased stroke volume"],
+          ["resting heart rate", "lower resting heart rate"],
+          ["blood pressure", "lower blood pressure"],
+          ["cardiac output", "maximal cardiac output"],
+          ["capillarisation", "muscle capillaries"],
+          ["chd", "stroke", "coronary heart disease"]
+        ],
+        modelAnswers: [
+          "Cardiac hypertrophy (stronger cardiac muscle)",
+          "Increased stroke volume and maximal cardiac output",
+          "Reduced resting heart rate and lower blood pressure",
+          "Increased capillarisation at skeletal muscles"
+        ]
+      },
+      {
+        id: "q10a",
+        title: "Question 10 (a)",
+        marks: 3,
+        text: "Describe a suitable warm up for someone in the over 50 years and retired target group who has not been participating in regular physical activity.",
+        type: "area",
+        acceptable: [
+          ["pulse raiser", "march on spot", "knee lifts", "low intensity walk"],
+          ["static stretch", "seated stretch", "wall support", "chair stretch"],
+          ["mobility", "dynamic", "gentle passing", "arm swings"]
+        ],
+        modelAnswers: [
+          "1. Low-intensity pulse raiser: Marching on the spot, gentle knee lifts, or walking.",
+          "2. Appropriate static stretching: Seated hamstring stretch or calf stretch using wall for balance.",
+          "3. Mobility / dynamic exercises: Arm/leg bending, low-impact chair exercises, or light passing drills."
+        ]
+      },
+      {
+        id: "q10b",
+        title: "Question 10 (b)",
+        marks: 3,
+        text: "Identify three musculoskeletal benefits gained by people over 50 through participation in physical activity.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["muscle tone", "maintain muscle tone"],
+          ["muscle strength", "increased strength"],
+          ["bone density", "stronger bones", "maintain bone density"],
+          ["osteoarthritis", "reduced risk of osteoarthritis"],
+          ["osteoporosis", "reduced risk of osteoporosis", "bone disease"],
+          ["ligament", "ligament strength"],
+          ["cartilage", "thickness of cartilage"],
+          ["joint strength", "joint stability"],
+          ["flexibility", "mobility"]
+        ],
+        modelAnswers: [
+          "Maintained/increased bone density (reducing osteoporosis risk)",
+          "Increased muscle strength and muscle tone",
+          "Reduced risk of osteoarthritis and increased joint flexibility",
+          "Increased ligament strength and cartilage thickness"
+        ]
+      },
+      {
+        id: "q11a",
+        title: "Question 11 (a)",
+        marks: 3,
+        text: "Describe three potential benefits of physical activity on young children's (0-10 years old) skeletal system.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["bone density", "bone strength", "less likely to break", "fracture"],
+          ["ligament strength", "joint stability", "stronger joints"],
+          ["osteoporosis", "prevent osteoporosis later in life"],
+          ["joint mobility", "flexibility", "prevent osteoarthritis"],
+          ["healthy weight", "less stress on bones", "less stress on joints"]
+        ],
+        modelAnswers: [
+          "Increased bone density / stronger bones (less risk of fractures)",
+          "Increased strength and stability of ligaments and joints",
+          "Reduced risk of developing osteoporosis in later life",
+          "Maintained healthy body weight, reducing stress on growing joints"
+        ]
+      },
+      {
+        id: "q11b",
+        title: "Question 11 (b)",
+        marks: 3,
+        text: "Describe three other physical reasons why young children are encouraged to participate in physical activity.",
+        type: "list",
+        count: 3,
+        acceptable: [
+          ["obesity", "healthy body weight", "weight control"],
+          ["muscular", "muscle strength", "muscle tone"],
+          ["cardiovascular", "lower blood pressure", "heart health"],
+          ["respiratory", "lung capacity"],
+          ["coordination", "agility", "balance", "motor skills", "components of fitness"],
+          ["disease", "prevention of chronic illness"]
+        ],
+        modelAnswers: [
+          "Prevention of obesity / maintaining a healthy body weight",
+          "Muscular development: Increased muscle strength and tone",
+          "Cardiovascular & respiratory health improvement",
+          "Development of motor skills (coordination, balance, agility)"
+        ]
+      },
+      {
+        id: "q12",
+        title: "Question 12",
+        marks: 4,
+        text: "Describe the potential physiological impact of physical activity on children/adolescents (11 to 15-years old).",
+        type: "area",
+        acceptable: [
+          ["body fat", "reduce fat", "obesity"],
+          ["body weight", "healthy weight"],
+          ["bone health", "bone density", "osteoporosis"],
+          ["cardiovascular health", "heart health"],
+          ["metabolism", "efficient metabolism"],
+          ["joint strength", "strengthen joints"],
+          ["flexibility", "mobility"],
+          ["muscular strength", "muscular endurance"]
+        ],
+        modelAnswers: [
+          "Reduction in body fat and healthy body weight management (obesity control)",
+          "Improved bone density and skeletal development",
+          "Improved cardiovascular and respiratory health",
+          "Enhanced muscular strength, endurance, and joint stability",
+          "More efficient metabolic rate"
+        ]
+      },
+      {
+        id: "q13",
+        title: "Question 13",
+        marks: 6,
+        text: "Describe the values developed and physiological benefits for a child participating in regular physical activity through a 'Change 4 Life' club.",
+        type: "area",
+        acceptable: [
+          ["bone density", "stronger bones", "osteoporosis"],
+          ["tendon strength", "flexibility", "pliable"],
+          ["muscle strength", "stronger muscles"],
+          ["vital capacity", "respiratory muscles", "lung capacity"],
+          ["cardiac hypertrophy", "stronger heart", "blood pressure", "resting hr"],
+          ["weight control", "prevent obesity"],
+          ["fair play", "honesty", "discipline", "rules"],
+          ["sportsmanship"],
+          ["teamwork", "cooperation"],
+          ["communication"],
+          ["leadership"],
+          ["respect", "tolerance", "equality", "inclusion"]
+        ],
+        modelAnswers: [
+          "Physiological Benefits (Sub-max 4):",
+          "• Increased bone density / stronger skeletal structure",
+          "• Increased muscle strength and pliability",
+          "• Improved cardiovascular health (cardiac hypertrophy, lower resting HR)",
+          "• Weight management and reduction in childhood obesity risk",
+          "Values Developed (Sub-max 4):",
+          "• Fair play, honesty, discipline, and adherence to rules",
+          "• Sportsmanship, teamwork, and communication skills",
+          "• Respect, tolerance, equality, and inclusion of all abilities"
+        ]
+      },
+      {
+        id: "q14",
+        title: "Question 14",
+        marks: 4,
+        text: "Suggest four potential health benefits of regular physical activity.",
+        type: "list",
+        count: 4,
+        acceptable: [
+          ["body fat", "reduce obesity", "weight control"],
+          ["healthy weight", "prevent overweight"],
+          ["mental health", "psychological", "reduce stress", "emotional wellbeing"],
+          ["joint health", "osteoarthritis"],
+          ["muscular health", "muscle strength"],
+          ["cardiovascular health", "heart health"],
+          ["respiratory health", "lung health"],
+          ["bone health", "bone density"],
+          ["life expectancy", "disease prevention"]
+        ],
+        modelAnswers: [
+          "Reduction in body fat / prevention of obesity",
+          "Improved mental health, psychological well-being, and reduced stress",
+          "Improved cardiovascular health (reduced risk of heart disease)",
+          "Improved bone density and reduced risk of joint/bone disorders",
+          "Increased life expectancy and easier execution of daily tasks"
+        ]
+      }
+    ];
+
+    // --- DOM Initialization & Render ---
+    function renderQuestions() {
+      const container = document.getElementById('questionsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      try {
+        questionsData.forEach(q => {
+          const card = document.createElement('div');
+          card.className = 'card question-card';
+          card.id = `card_${q.id}`;
+
+          let inputHtml = '';
+
+          if (q.type === 'list') {
+            inputHtml = '<div class="list-inputs">';
+            for (let i = 1; i <= q.count; i++) {
+              inputHtml += `
+                <div class="list-item">
+                  <span>${i}.</span>
+                  <input type="text" id="${q.id}_item_${i}" class="input-field" oninput="autoSave()">
+                </div>
+              `;
+            }
+            inputHtml += '</div>';
+          } else if (q.type === 'single') {
+            inputHtml = `<input type="text" id="${q.id}_single" class="answer-box input-field" style="min-height: auto;" oninput="autoSave()">`;
+          } else if (q.type === 'stage_desc') {
+            inputHtml = `
+              <div class="list-inputs">
+                <div class="list-item"><span>Stage 1 Name:</span><input type="text" id="${q.id}_s1_name" class="input-field" oninput="autoSave()"></div>
+                <textarea id="${q.id}_s1_desc" class="answer-box input-field" placeholder="Description of Stage 1..." oninput="autoSave()"></textarea>
+                <div class="list-item"><span>Stage 2 Name:</span><input type="text" id="${q.id}_s2_name" class="input-field" oninput="autoSave()"></div>
+                <textarea id="${q.id}_s2_desc" class="answer-box input-field" placeholder="Description of Stage 2..." oninput="autoSave()"></textarea>
+              </div>
+            `;
+          } else if (q.type === 'tf') {
+            inputHtml = `
+              <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="${q.id}_tf" value="True" onchange="autoSave()"> True</label>
+                <label class="radio-option"><input type="radio" name="${q.id}_tf" value="False" onchange="autoSave()"> False</label>
+              </div>
+            `;
+          } else if (q.type === 'area') {
+            inputHtml = `<textarea id="${q.id}_text" class="answer-box input-field" placeholder="Write your full answer here..." oninput="autoSave()"></textarea>`;
+          }
+
+          card.innerHTML = `
+            <div class="question-header">
+              <span class="question-title">${q.title}</span>
+              <span class="question-marks">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+            </div>
+            <div class="question-text">${q.text}</div>
+            ${inputHtml}
+            <div class="feedback-box" id="feedback_${q.id}"></div>
+          `;
+
+          container.appendChild(card);
+        });
+
+        loadFromLocalStorage();
+      } catch (err) {
+        container.innerHTML = `<div class="card" style="color: red;"><strong>Error rendering questions:</strong> ${err.message}</div>`;
+      }
+    }
+
+    // --- Fuzzy Matching & String Utility ---
+    function levenshteinDistance(a, b) {
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    function normalizeText(text) {
+      return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+    }
+
+    function fuzzyMatchWord(inputWord, targetWord) {
+      if (inputWord === targetWord) return true;
+      if (targetWord.length <= 3) return inputWord === targetWord;
+      const dist = levenshteinDistance(inputWord, targetWord);
+      return dist <= (targetWord.length > 6 ? 2 : 1);
+    }
+
+    function matchesConceptGroup(inputText, keywordList) {
+      const cleanInput = normalizeText(inputText);
+      const inputWords = cleanInput.split(/\s+/);
+
+      return keywordList.some(keyword => {
+        const cleanKey = normalizeText(keyword);
+        if (cleanInput.includes(cleanKey)) return true;
+
+        const keyWords = cleanKey.split(/\s+/);
+        return keyWords.every(kw => 
+          inputWords.some(iw => fuzzyMatchWord(iw, kw))
+        );
+      });
+    }
+
+    // --- Marking Algorithm ---
+    function markQuestion(q) {
+      let score = 0;
+      let attempted = false;
+      let userAnswersText = [];
+
+      if (q.type === 'list') {
+        const usedGroups = new Set();
+        for (let i = 1; i <= q.count; i++) {
+          const el = document.getElementById(`${q.id}_item_${i}`);
+          const val = el ? el.value.trim() : '';
+          userAnswersText.push(val);
+          if (val.length > 0) attempted = true;
+
+          if (val.length > 2 && q.acceptable) {
+            for (let gIdx = 0; gIdx < q.acceptable.length; gIdx++) {
+              if (!usedGroups.has(gIdx)) {
+                if (matchesConceptGroup(val, q.acceptable[gIdx])) {
+                  score++;
+                  usedGroups.add(gIdx);
+                  break;
+                }
+              }
+            }
+          }
+        }
+      } else if (q.type === 'single') {
+        const el = document.getElementById(`${q.id}_single`);
+        const val = el ? el.value.trim() : '';
+        userAnswersText.push(val);
+        if (val.length > 0) attempted = true;
+
+        if (val.length > 2 && q.acceptable) {
+          for (let gIdx = 0; gIdx < q.acceptable.length; gIdx++) {
+            if (matchesConceptGroup(val, q.acceptable[gIdx])) {
+              score = 1;
+              break;
+            }
+          }
+        }
+      } else if (q.type === 'stage_desc') {
+        const s1_n = (document.getElementById(`${q.id}_s1_name`) || {}).value || '';
+        const s1_d = (document.getElementById(`${q.id}_s1_desc`) || {}).value || '';
+        const s2_n = (document.getElementById(`${q.id}_s2_name`) || {}).value || '';
+        const s2_d = (document.getElementById(`${q.id}_s2_desc`) || {}).value || '';
+
+        if (s1_n.trim() || s1_d.trim() || s2_n.trim() || s2_d.trim()) attempted = true;
+
+        const stages = [
+          { name: "storming", desc: ["compete", "role", "conflict", "tension", "power", "clique"] },
+          { name: "norming", desc: ["agree", "common goal", "consensus", "role clearer", "unity"] },
+          { name: "performing", desc: ["work together", "achieve goal", "autonomous", "resolve dispute"] },
+          { name: "adjourning", desc: ["mourning", "disband", "separate", "celebrate"] }
+        ];
+
+        [ {n: s1_n, d: s1_d}, {n: s2_n, d: s2_d} ].forEach(pair => {
+          if (pair.n.trim().length > 2) {
+            stages.forEach(st => {
+              if (matchesConceptGroup(pair.n, [st.name])) {
+                score += 1;
+                if (pair.d.trim().length > 5 && matchesConceptGroup(pair.d, st.desc)) {
+                  score += 1;
+                }
+              }
+            });
+          }
+        });
+        score = Math.min(score, 4);
+      } else if (q.type === 'tf') {
+        const selected = document.querySelector(`input[name="${q.id}_tf"]:checked`);
+        if (selected) {
+          attempted = true;
+          userAnswersText.push(selected.value);
+          if (selected.value === q.correct) score = 1;
+        }
+      } else if (q.type === 'area') {
+        const el = document.getElementById(`${q.id}_text`);
+        const val = el ? el.value.trim() : '';
+        userAnswersText.push(val);
+        if (val.length > 0) attempted = true;
+
+        if (val.length > 5 && q.acceptable) {
+          const usedGroups = new Set();
+          q.acceptable.forEach((group, idx) => {
+            if (matchesConceptGroup(val, group) && !usedGroups.has(idx)) {
+              score++;
+              usedGroups.add(idx);
+            }
+          });
+          score = Math.min(score, q.marks);
+        }
+      }
+
+      return { score, attempted, userAnswersText };
+    }
+
+    function markAllQuestions() {
+      let grandTotal = 0;
+      let totalAttempted = 0;
+
+      questionsData.forEach(q => {
+        const result = markQuestion(q);
+        const fbBox = document.getElementById(`feedback_${q.id}`);
+
+        if (!result.attempted) {
+          fbBox.className = "feedback-box show unattempted";
+          fbBox.innerHTML = `
+            <strong>⚠️ Not Attempted</strong>
+            <p>You have not attempted this question. Complete your attempt to unlock the mark scheme and model answer.</p>
+          `;
+        } else {
+          grandTotal += result.score;
+          totalAttempted++;
+
+          fbBox.className = "feedback-box show attempted";
+          
+          let badgeClass = "low";
+          if (result.score === q.marks) badgeClass = "high";
+          else if (result.score > 0) badgeClass = "med";
+
+          let modelHtml = `<div class="model-answer"><h5>Model / Indicative Answers:</h5><ul>`;
+          q.modelAnswers.forEach(m => {
+            modelHtml += `<li>${m}</li>`;
+          });
+          modelHtml += `</ul></div>`;
+
+          fbBox.innerHTML = `
+            <span class="score-badge ${badgeClass}">Score: ${result.score} / ${q.marks}</span>
+            <p style="font-size: 0.9rem; color: #444;">Feedback: Evaluated based on OCR mark scheme criteria and key physiological/sports development concepts.</p>
+            ${modelHtml}
+          `;
+        }
+      });
+
+      const summaryCard = document.getElementById('resultsSummary');
+      const scoreDisplay = document.getElementById('totalScoreDisplay');
+      const feedbackDisplay = document.getElementById('gradeFeedback');
+
+      scoreDisplay.innerText = `${grandTotal} / 66`;
+      const percentage = Math.round((grandTotal / 66) * 100);
+
+      let grade = "Keep Revising";
+      if (percentage >= 80) grade = "Distinction* / Grade A*";
+      else if (percentage >= 70) grade = "Distinction / Grade A";
+      else if (percentage >= 60) grade = "Merit / Grade B";
+      else if (percentage >= 50) grade = "Pass / Grade C";
+
+      feedbackDisplay.innerHTML = `Overall Score: <strong>${percentage}%</strong> (${grade})<br><small>${totalAttempted} of ${questionsData.length} questions attempted.</small>`;
+      summaryCard.className = "card results-card show";
+      summaryCard.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --- Save & Progress Management ---
+    function collectFormData() {
+      const data = {
+        studentName: (document.getElementById('studentName') || {}).value || '',
+        candidateNo: (document.getElementById('candidateNo') || {}).value || '',
+        timestamp: new Date().toISOString(),
+        answers: {}
+      };
+
+      questionsData.forEach(q => {
+        if (q.type === 'list') {
+          data.answers[q.id] = [];
+          for (let i = 1; i <= q.count; i++) {
+            const el = document.getElementById(`${q.id}_item_${i}`);
+            data.answers[q.id].push(el ? el.value : '');
+          }
+        } else if (q.type === 'single') {
+          const el = document.getElementById(`${q.id}_single`);
+          data.answers[q.id] = el ? el.value : '';
+        } else if (q.type === 'stage_desc') {
+          data.answers[q.id] = {
+            s1_name: (document.getElementById(`${q.id}_s1_name`) || {}).value || '',
+            s1_desc: (document.getElementById(`${q.id}_s1_desc`) || {}).value || '',
+            s2_name: (document.getElementById(`${q.id}_s2_name`) || {}).value || '',
+            s2_desc: (document.getElementById(`${q.id}_s2_desc`) || {}).value || ''
+          };
+        } else if (q.type === 'tf') {
+          const checked = document.querySelector(`input[name="${q.id}_tf"]:checked`);
+          data.answers[q.id] = checked ? checked.value : "";
+        } else if (q.type === 'area') {
+          const el = document.getElementById(`${q.id}_text`);
+          data.answers[q.id] = el ? el.value : '';
+        }
+      });
+
+      return data;
+    }
+
+    function autoSave() {
+      try {
+        const data = collectFormData();
+        localStorage.setItem('ocr_u3_revision_data', JSON.stringify(data));
+        const status = document.getElementById('saveStatus');
+        if (status) status.innerText = "Auto-saved at " + new Date().toLocaleTimeString();
+      } catch (e) {
+        console.warn("Auto-save skipped (localStorage blocked)");
+      }
+    }
+
+    function saveToLocalStorage() {
+      try {
+        autoSave();
+        alert("Your revision progress has been saved to your browser!");
+      } catch (e) {
+        alert("Unable to save to browser local storage. You can still use 'Export JSON' to save a file!");
+      }
+    }
+
+    function loadFromLocalStorage() {
+      try {
+        const saved = localStorage.getItem('ocr_u3_revision_data');
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        if (data.studentName) document.getElementById('studentName').value = data.studentName;
+        if (data.candidateNo) document.getElementById('candidateNo').value = data.candidateNo;
+
+        if (data.answers) {
+          questionsData.forEach(q => {
+            const ans = data.answers[q.id];
+            if (!ans) return;
+
+            if (q.type === 'list' && Array.isArray(ans)) {
+              ans.forEach((val, idx) => {
+                const el = document.getElementById(`${q.id}_item_${idx + 1}`);
+                if (el) el.value = val;
+              });
+            } else if (q.type === 'single') {
+              const el = document.getElementById(`${q.id}_single`);
+              if (el) el.value = ans;
+            } else if (q.type === 'stage_desc' && typeof ans === 'object') {
+              if (ans.s1_name && document.getElementById(`${q.id}_s1_name`)) document.getElementById(`${q.id}_s1_name`).value = ans.s1_name;
+              if (ans.s1_desc && document.getElementById(`${q.id}_s1_desc`)) document.getElementById(`${q.id}_s1_desc`).value = ans.s1_desc;
+              if (ans.s2_name && document.getElementById(`${q.id}_s2_name`)) document.getElementById(`${q.id}_s2_name`).value = ans.s2_name;
+              if (ans.s2_desc && document.getElementById(`${q.id}_s2_desc`)) document.getElementById(`${q.id}_s2_desc`).value = ans.s2_desc;
+            } else if (q.type === 'tf') {
+              const rad = document.querySelector(`input[name="${q.id}_tf"][value="${ans}"]`);
+              if (rad) rad.checked = true;
+            } else if (q.type === 'area') {
+              const el = document.getElementById(`${q.id}_text`);
+              if (el) el.value = ans;
+            }
+          });
+        }
+      } catch (e) {
+        console.error("Error loading saved data", e);
+      }
+    }
+
+    function exportJSON() {
+      const data = collectFormData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `OCR_Unit3_Revision_${(data.studentName || 'Student').replace(/\s+/g, '_')}.json`;
+      a.click();
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          try { localStorage.setItem('ocr_u3_revision_data', JSON.stringify(data)); } catch(err){}
+          loadFromLocalStorage();
+          alert("Progress loaded successfully!");
+        } catch (err) {
+          alert("Invalid file format.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // --- Export as Google Doc Compatible Document ---
+    function exportGoogleDoc() {
+      const name = document.getElementById('studentName').value || "Student";
+      const cand = document.getElementById('candidateNo').value || "N/A";
+      const dateStr = new Date().toLocaleDateString();
+
+      let docHtml = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset="utf-8">
+          <title>OCR Level 3 Sport - Unit 3 Revision Guide</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.5; color: #333; margin: 30px; }
+            h1 { color: #003366; font-size: 22pt; text-align: center; margin-bottom: 5pt; }
+            p.subtitle { text-align: center; font-size: 11pt; color: #666; margin-bottom: 20pt; }
+            .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 20pt; }
+            .meta-table td { padding: 8pt; border: 1pt solid #b0b0b0; background-color: #f8f9fa; font-size: 11pt; }
+            .q-card { margin-bottom: 20pt; padding: 12pt; border: 1pt solid #cccccc; background-color: #ffffff; }
+            .q-title { font-weight: bold; font-size: 12pt; color: #003366; margin-bottom: 6pt; }
+            .q-text { font-size: 11pt; margin-bottom: 10pt; font-style: italic; }
+            .user-ans { background-color: #f4f7f6; padding: 8pt; border-left: 3pt solid #003366; margin-bottom: 10pt; font-size: 11pt; }
+            .model-ans { background-color: #eef9f1; padding: 8pt; border-left: 3pt solid #28a745; font-size: 10pt; }
+            .unattempted { background-color: #fff8e6; padding: 8pt; border-left: 3pt solid #ffc107; color: #856404; font-size: 10pt; }
+          </style>
+        </head>
+        <body>
+          <h1>OCR Level 3 Sport & Physical Activity</h1>
+          <p class="subtitle">Unit 3 Synoptic Revision Guide - Completed Answer Sheet</p>
+
+          <table class="meta-table">
+            <tr>
+              <td><strong>Student Name:</strong> ${name}</td>
+              <td><strong>Candidate/Class No:</strong> ${cand}</td>
+              <td><strong>Date Exported:</strong> ${dateStr}</td>
+            </tr>
+          </table>
+          <hr style="border: none; border-top: 1pt solid #003366; margin-bottom: 20pt;">
+      `;
+
+      questionsData.forEach(q => {
+        const markRes = markQuestion(q);
+
+        docHtml += `
+          <div class="q-card">
+            <div class="q-title">${q.title} [${q.marks} Mark${q.marks > 1 ? 's' : ''}]</div>
+            <div class="q-text">${q.text.replace(/\n/g, '<br>')}</div>
+            <div class="user-ans">
+              <strong>Student Answer:</strong><br>
+        `;
+
+        if (!markRes.attempted) {
+          docHtml += `<em>[No attempt provided]</em></div>`;
+          docHtml += `
+            <div class="unattempted">
+              <strong>Note:</strong> Question unattempted. Model answers are hidden until an attempt is completed.
+            </div>
+          `;
+        } else {
+          if (q.type === 'stage_desc') {
+            const s1n = (document.getElementById(`${q.id}_s1_name`) || {}).value || '';
+            const s1d = (document.getElementById(`${q.id}_s1_desc`) || {}).value || '';
+            const s2n = (document.getElementById(`${q.id}_s2_name`) || {}).value || '';
+            const s2d = (document.getElementById(`${q.id}_s2_desc`) || {}).value || '';
+            docHtml += `
+              Stage 1: ${s1n}<br>Description: ${s1d}<br><br>
+              Stage 2: ${s2n}<br>Description: ${s2d}
+            `;
+          } else {
+            docHtml += markRes.userAnswersText.filter(a => a).join('<br>') || '<em>Attempted</em>';
+          }
+          docHtml += `</div>`;
+
+          docHtml += `
+            <div class="model-ans">
+              <strong>Score:</strong> ${markRes.score} / ${q.marks}<br>
+              <strong>Model Answers / Indicative Content:</strong>
+              <ul>
+          `;
+          q.modelAnswers.forEach(m => {
+            docHtml += `<li>${m}</li>`;
+          });
+          docHtml += `</ul></div>`;
+        }
+
+        docHtml += `</div>`;
+      });
+
+      docHtml += `</body></html>`;
+
+      const blob = new Blob(['\ufeff', docHtml], { type: 'application/msword' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Unit3_Revision_${name.replace(/\s+/g, '_')}.doc`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Direct Execution & DOMContentLoaded Trigger
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderQuestions);
+    } else {
+      renderQuestions();
+    }
+  </script>
+</body>
+</html>
